@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import AddEvent from "./components/events/AddEvents";
+import EditEvent from "./components/events/EditEvents";
+import ListEvent from "./components/events/ListEvents";
+import NavigationBar from "./components/shared/Header";
+import HomePage from "./components/shared/Homepage";
+import AddVolunteer from "./components/volunteers/AddVolunteer";
+import EditVolunteer from "./components/volunteers/EditVolunteer";
+import ListVolunteers from "./components/volunteers/ListVolunteer";
+import "./styles.css";
+import { Routes, Route } from "react-router-dom";
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavigationBar />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/events" element={<ListEvent />} />
+        <Route path="/event/add" element={<AddEvent />} />
+        <Route path="/event/edit/:eventID" element={<EditEvent />} />
+        <Route path="/volunteers" element={<ListVolunteers />} />
+        <Route path="/volunteers/add" element={<AddVolunteer />} />
+        <Route
+          path="/volunteers/edit/:volunteerID"
+          element={<EditVolunteer />}
+        />
+      </Routes>
     </div>
   );
 }
-
-export default App;
